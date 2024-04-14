@@ -1,11 +1,15 @@
+// index.js
+
 import express from 'express';
 import initApp from './src/modules/index.router.js';
-import "dotenv/config.js"
-const app = express();
-const PORT=process.env.PORT ||3000;
+import dotenv from 'dotenv'; // Import dotenv directly
+dotenv.config(); // Load environment variables from .env file
 
-initApp(app,express);
-app.listen(PORT,()=>{
-  console.log(`server listening on ${PORT} `);
-}
-);
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
+
+initApp(app, express);
