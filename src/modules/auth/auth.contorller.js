@@ -37,12 +37,12 @@ export const Singup = async (req, res) => {
 export const Singin = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await userModel.findOne({ email }).select("userName password");
+  const user = await userModel.findOne({ email });
   if (!user) {
     return res.status(409).json({ message: "email not exist" });
   }
   const match = await bcrypt.compare(password, user.password);
-    if (user.confirmEmail) {
+    if (!user.confirmEmail) {
       return res.status(403).json({ message: "plz confirm email" });
     }
     if (!match) {

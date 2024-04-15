@@ -1,4 +1,4 @@
-import mongoose, { Types } from 'mongoose';
+import mongoose, { Types, model } from 'mongoose';
 import { Schema } from "mongoose";
 
   const MessageSchema = new Schema({
